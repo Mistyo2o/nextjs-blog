@@ -24,7 +24,7 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent side="right">
                 <MobileLink href="/" className='flex item-center'>
-                    <Icons.logo className='mr-2 h-2 w-4'/>
+                    <Icons.logo className='mr-2 h-6 w-4'/>
                     <span className='font-bold'>{SiteConfig.title}</span>
                 </MobileLink>
                 <div className='flex flex-col gap-3 mt-3'>
