@@ -1,10 +1,10 @@
 import React from 'react'
 import { posts } from '#site/content';
-import { notFound } from 'next/navigation';
 import MDXContent from '@/components/mdx-components';
 import "@/styles/mdx.css"
 import { Metadata } from 'next';
 import SiteConfig from '@/config/site';
+import NotFound from '@/app/not-found';
 
 interface PostPageProps {
     params: {
@@ -60,7 +60,7 @@ export async function generateStaticParams(): Promise<PostPageProps["params"][]>
 export default async function PostPage(params:{params:Promise<{slug:string[]}>}) {
     const post = await getPostFromParams(params)
     if (!post || !post.published) {
-        notFound()
+        return (<NotFound/>)
     }
     return (
         <article className='container py-6 prose dark:prose-invert max-w-3xl mx-auto'>
