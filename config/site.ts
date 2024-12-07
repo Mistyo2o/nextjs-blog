@@ -1,6 +1,6 @@
 const SiteConfig = {
     "author":"Misty",
-    "title": "NextJs Blog",
+    "title": "Misty's blog",
     "description": "The is Next.Js Demo ",
     "url":"",
     "links":{
