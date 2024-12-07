@@ -10,7 +10,7 @@ export default {
     // Instead, use `not-found.ts` as a workaround
     // "ts" is required to resolve `not-found.ts`
     // https://github.com/vercel/next.js/issues/65447
-    "ts"
+    "tsx"
 
   ],
   webpack: (config) => {
