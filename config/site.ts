@@ -5,7 +5,7 @@ const SiteConfig = {
     "url":"",
     "links":{
         "personalSite":"",
-        "mail": "zhangfugui411@gmail.com",
+        "mail": "https://zhangfugui411@gmail.com",
         "github": "https://github.com/Mistyo2o"
     }
 }
