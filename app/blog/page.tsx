@@ -13,14 +13,10 @@ export const metadata: Metadata = {
 
 const POSTS_PER_PAGE = 5;
 
-interface BlogPageProos{
-  searchParams:{
-    page?: string
-  }
-}
 
-const BlogPage = ({searchParams}: BlogPageProos) => {
-  const currentPage = Number(searchParams?.page) || 1;
+
+export default async function BlogPage(searchParams: {searchParams:Promise<{page?: string}>}){
+  const currentPage =Number((await searchParams.searchParams).page) || 1;
   const sorttedPosts = sortPosts(posts.filter((post) => post.published));
   const totalPages = Math.ceil(sorttedPosts.length / POSTS_PER_PAGE);
 
@@ -54,5 +50,3 @@ const BlogPage = ({searchParams}: BlogPageProos) => {
     </div>
   )
 }
-
-export default BlogPage

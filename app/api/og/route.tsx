@@ -85,6 +85,6 @@ export async function GET(req: NextRequest) {
         })
 
     } catch (error) {
-        return new Response("Failed to generate image", { status: 500 })
+        return new Response(`Failed to generate image ${error}`, { status: 500 })
     }
 }

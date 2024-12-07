@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   // othor next config here...
-  webpack: config => {
+  webpack: (config: { plugins: VeliteWebpackPlugin[]; }) => {
     config.plugins.push(new VeliteWebpackPlugin())
     return config
   }
@@ -9,7 +9,7 @@ module.exports = {
 
 class VeliteWebpackPlugin {
   static started = false
-  apply(/** @type {import('webpack').Compiler} */ compiler) {
+  apply(/** @type {import('webpack').Compiler} */ compiler: { hooks: { beforeCompile: { tapPromise: (arg0: string, arg1: () => Promise<void>) => void } }; options: { mode: string } }) {
     // executed three times in nextjs
     // twice for the server (nodejs / edge runtime) and once for the client
     compiler.hooks.beforeCompile.tapPromise('VeliteWebpackPlugin', async () => {

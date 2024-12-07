@@ -12,13 +12,13 @@ interface PostPageProps {
     }
 }
 
-async function getPostFromParams(params: PostPageProps["params"]) {
-    const slug = params?.slug?.join("/");
+async function getPostFromParams(params: {params:Promise<{slug:string[]}>}) {
+    const slug = (await params.params).slug.join("/")
     const psot = posts.find((psot) => psot.slugAsParams === slug)
     return psot;
 }
 
-export async function generateMetadata({params}:PostPageProps):Promise<Metadata> {
+export async function generateMetadata(params: {params:Promise<{slug:string[]}>}):Promise<Metadata> {
     const post = await getPostFromParams(params)
     if(!post){
         return {}
@@ -57,7 +57,7 @@ export async function generateStaticParams(): Promise<PostPageProps["params"][]>
     return posts.map((post) => ({ slug: post.slugAsParams.split("/") }))
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage(params:{params:Promise<{slug:string[]}>}) {
     const post = await getPostFromParams(params)
     if (!post || !post.published) {
         notFound()
