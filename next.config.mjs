@@ -3,11 +3,6 @@ import { build } from "velite";
 /** @type {import('next').NextConfig} */
 export default {
   // othor next config here...
-  pageExtensions: [
-    "ts",
-    "tsx"
-
-  ],
   webpack: (config) => {
     config.plugins.push(new VeliteWebpackPlugin());
     return config;
